@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSCA Mathematics Question Bank: Trigonometric Functions (300 Questions)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #cc342c;
+      --brand-dark: #a62a23;
+      --brand-light: #fdecea;
+      --brand-font: "Michroma", "Eurostile", "Microgramma", "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --success-light: #dcfce7;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    body { background-color: var(--slate-100); color: var(--slate-800); line-height: 1.6; padding-bottom: 60px; }
+
+    /* HERO HEADER */
+    header.hero-banner { background: linear-gradient(135deg, var(--brand-dark), var(--brand)); color: white; padding: 16px 20px; }
+    .hero-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .hero-brand { display: flex; align-items: center; gap: 14px; }
+    .brand-logo { height: 52px; width: auto; background: #f9f7f2; border-radius: 10px; padding: 4px 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); flex-shrink: 0; }
+    @media (max-width: 560px) { .brand-logo { height: 40px; } .hero-brand { gap: 10px; } }
+    .hero-title h1 { font-family: var(--brand-font); font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; font-size: 1.05rem; }
+    .hero-title p { font-family: var(--brand-font); font-size: 0.68rem; letter-spacing: 0.06em; opacity: 0.85; }
+
+    /* STICKY COMMAND BAR */
+    .sticky-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 2px solid var(--brand); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .sticky-inner { max-width: 1200px; margin: 0 auto; padding: 8px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .bar-top-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+    .topic-tabs { display: flex; flex-wrap: wrap; gap: 4px; background: var(--slate-100); padding: 3px; border-radius: 6px; }
+    .tab-btn { background: transparent; border: none; color: var(--slate-700); padding: 5px 10px; border-radius: 4px; font-size: 0.72rem; font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: all 0.15s; font-family: var(--brand-font); letter-spacing: 0.02em; }
+    .tab-btn:hover { color: var(--brand); }
+    .tab-btn.active { background: white; color: var(--brand); box-shadow: inset 0 -2px 0 var(--brand), 0 1px 3px rgba(0,0,0,0.1); }
+    .tab-badge { font-size: 0.68rem; opacity: 0.75; font-family: var(--brand-font); }
+
+    .bar-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .stat-pill { display: flex; align-items: center; gap: 6px; background: var(--slate-50); border: 1px solid var(--slate-200); padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; }
+    .stat-lbl { color: var(--slate-600); font-weight: 600; text-transform: uppercase; font-size: 0.7rem; font-family: var(--brand-font); letter-spacing: 0.02em; }
+    .stat-val { font-weight: 700; color: var(--slate-800); }
+
+    .timer-btn { background: transparent; border: none; color: var(--slate-600); cursor: pointer; font-size: 0.75rem; padding: 1px 4px; border-radius: 3px; line-height: 1; display: inline-flex; align-items: center; justify-content: center; }
+    .timer-btn:hover { color: var(--brand); background: var(--slate-200); }
+
+    .mode-switch { display: flex; gap: 2px; background: var(--slate-100); padding: 2px; border-radius: 4px; }
+    .mode-btn { background: transparent; border: none; color: var(--slate-700); padding: 4px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 3px; cursor: pointer; font-family: var(--brand-font); letter-spacing: 0.02em; }
+    .mode-btn.active { background: white; color: var(--brand); box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+
+    .btn-action { background: var(--slate-100); border: 1px solid var(--slate-300); color: var(--slate-700); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: var(--brand-font); letter-spacing: 0.02em; }
+    .btn-action:hover { background: var(--slate-200); }
+    .btn-action.primary { background: var(--brand); color: white; border-color: var(--brand); }
+    .btn-action.primary:hover { background: var(--brand-dark); }
+    .toggle-grid-link { background: none; border: none; color: var(--brand); font-size: 0.75rem; cursor: pointer; font-weight: 600; padding: 2px 4px; font-family: var(--brand-font); }
+
+    .bar-nav-row { overflow-x: auto; padding-top: 2px; }
+    .bar-nav-row.collapsed { display: none; }
+    .jump-grid-compact { display: grid; grid-template-columns: repeat(25, 1fr); gap: 4px; min-width: 700px; }
+    .jump-node { height: 24px; border-radius: 4px; border: 1px solid var(--slate-200); background: var(--slate-50); color: var(--slate-600); font-size: 0.72rem; font-weight: 600; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.1s; }
+    .jump-node:hover { border-color: var(--brand); color: var(--brand); }
+    .jump-node.answered { background: var(--slate-200); color: var(--slate-800); }
+    .jump-node.correct { background: var(--success-light); border-color: var(--success); color: var(--success); }
+    .jump-node.wrong { background: var(--danger-light); border-color: var(--danger); color: var(--danger); }
+
+    /* QUESTIONS LIST */
+    main { max-width: 1200px; margin: 18px auto 0; padding: 0 16px; }
+    .question-list { display: flex; flex-direction: column; gap: 16px; }
+    .q-card { background: white; border-radius: var(--radius); padding: 20px 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.04); border: 1px solid var(--slate-200); scroll-margin-top: 105px; }
+    .q-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .q-id { font-size: 1rem; font-weight: 700; color: var(--primary); }
+    .q-tag { background: var(--primary-light); color: var(--primary-dark); padding: 2px 8px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
+    .q-text { font-size: 1rem; font-weight: 500; color: var(--slate-900); margin-bottom: 14px; word-break: break-word; }
+    .options-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    @media (min-width: 768px) { .options-grid.grid-2 { grid-template-columns: 1fr 1fr; } }
+    .opt-btn { background: var(--slate-50); border: 1.5px solid var(--slate-200); padding: 10px 14px; border-radius: 6px; font-size: 0.92rem; text-align: left; cursor: pointer; color: var(--slate-800); transition: all 0.12s ease; display: flex; align-items: center; }
+    .opt-btn:hover:not(:disabled) { background: var(--primary-light); border-color: var(--primary); color: var(--primary-dark); }
+    .opt-btn.selected { border-color: var(--primary); background: var(--primary-light); color: var(--primary-dark); font-weight: 600; }
+    .opt-btn.correct { background: var(--success-light) !important; border-color: var(--success) !important; color: var(--success) !important; font-weight: 600; }
+    .opt-btn.wrong { background: var(--danger-light) !important; border-color: var(--danger) !important; color: var(--danger) !important; }
+    .q-feedback { margin-top: 12px; padding: 10px 14px; border-radius: 6px; font-size: 0.88rem; display: none; }
+    .q-feedback.show { display: block; }
+    .q-feedback.correct { background: var(--success-light); color: #14532d; border-left: 4px solid var(--success); }
+    .q-feedback.wrong { background: var(--danger-light); color: #7f1d1d; border-left: 4px solid var(--danger); }
+
+    /* KEY SECTION */
+    .key-section { background: white; border-radius: var(--radius); padding: 20px 24px; margin-top: 28px; box-shadow: 0 2px 4px rgba(0,0,0,0.04); border: 1px solid var(--slate-200); }
+    .key-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+    .key-header h3 { font-size: 1rem; font-weight: 700; color: var(--slate-800); }
+    .key-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.82rem; }
+    .key-table th, .key-table td { border: 1px solid var(--slate-200); padding: 6px 8px; text-align: center; }
+    .key-table th { background: var(--slate-100); font-weight: 700; color: var(--slate-700); }
+    .key-table td.correct-highlight { font-weight: 700; color: var(--primary); }
+    .collapse-content { display: none; }
+    .collapse-content.open { display: block; }
+    footer { text-align: center; margin-top: 40px; font-size: 0.8rem; color: var(--slate-600); }
+
+    /* TIMER MODAL */
+    .timer-modal-backdrop { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(15, 23, 42, 0.62); }
+    .timer-modal-backdrop[hidden] { display: none !important; }
+    .timer-modal { width: min(100%, 380px); padding: 24px; border-radius: 14px; background: #fff; color: #172033; box-shadow: 0 20px 70px rgba(0,0,0,.3); }
+    .timer-modal h2 { margin: 0 0 8px; font-size: 1.25rem; font-family: var(--brand-font); }
+    .timer-modal p { margin: 0 0 16px; color: #64748b; font-size: .92rem; }
+    .timer-modal label { display: block; margin-bottom: 6px; font-weight: 650; }
+    .timer-modal input { box-sizing: border-box; display: block; width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font: inherit; color: #0f172a; }
+    .timer-modal input:focus { outline: 3px solid rgba(37,99,235,.18); border-color: #2563eb; }
+    .timer-modal-error { min-height: 1.25em; margin-top: 7px; color: #b91c1c; font-size: .85rem; }
+    .timer-modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+    .timer-modal-actions button { border: 0; border-radius: 8px; padding: 10px 15px; cursor: pointer; font: inherit; font-weight: 650; }
+    .timer-modal-cancel { background: #e2e8f0; color: #334155; }
+    .timer-modal-save { background: var(--brand); color: #fff; }
+    .timer-modal-save:hover { background: var(--brand-dark); }
+  </style>
+</head>
+<body>
+
+<header class="hero-banner">
+  <div class="hero-content">
+    <div class="hero-brand">
+      <img class="brand-logo" src="data:image/png;base64,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" alt="Crossline EDU logo">
+      <div class="hero-title">
+        <h1>CSCA Trigonometric Functions Question Bank (300 Questions)</h1>
+        <p>Chinese College Preparatory / Standard Entrance Exam Syllabus</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="sticky-bar">
+  <div class="sticky-inner">
+    <div class="bar-top-row">
+      <div class="topic-tabs">
+        <button class="tab-btn active" onclick="switchTab('arbitrary')" id="tab-arbitrary">
+          Arbitrary Angles (任意角) <span class="tab-badge">50</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('identities')" id="tab-identities">
+          Fundamental Identities (同角关系) <span class="tab-badge">50</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('reduction')" id="tab-reduction">
+          Reduction Formulas (诱导公式) <span class="tab-badge">50</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('graphs')" id="tab-graphs">
+          Graphs & Properties (图像与性质) <span class="tab-badge">50</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('sum_diff')" id="tab-sum_diff">
+          Sum & Difference (两角和与差) <span class="tab-badge">50</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('double_angle')" id="tab-double_angle">
+          Double-Angle (二倍角公式) <span class="tab-badge">50</span>
+        </button>
+      </div>
+
+      <div class="bar-controls">
+        <div class="stat-pill">
+          <span class="stat-lbl">Progress</span>
+          <span class="stat-val" id="stat-progress">0 / 50</span>
+        </div>
+
+        <div class="stat-pill" id="practice-acc-box">
+          <span class="stat-lbl">Accuracy</span>
+          <span class="stat-val" id="stat-accuracy">--</span>
+        </div>
+
+        <div class="stat-pill" id="score-box" style="display:none;">
+          <span class="stat-lbl">Score</span>
+          <span class="stat-val" id="stat-score" style="color:var(--success);">0%</span>
+        </div>
+
+        <div class="stat-pill" id="timer-box" style="display:none;">
+          <span class="stat-lbl">Timer</span>
+          <span class="stat-val" id="timer-display" style="cursor:pointer; font-variant-numeric:tabular-nums;" onclick="promptTimerDuration()" title="Click to customize duration">45:00</span>
+          <button class="timer-btn" id="timer-toggle-btn" onclick="toggleTimer()" title="Play / Pause">⏸</button>
+          <button class="timer-btn" id="timer-config-btn" onclick="promptTimerDuration()" title="Set Duration (min)">⚙</button>
+        </div>
+
+        <div class="mode-switch">
+          <button class="mode-btn active" id="btn-practice" onclick="setMode('practice')">Practice</button>
+          <button class="mode-btn" id="btn-exam" onclick="setMode('exam')">Exam</button>
+        </div>
+
+        <button class="btn-action" onclick="resetCurrentTab()">Reset</button>
+        <button class="btn-action primary" id="btn-submit-exam" style="display:none;" onclick="submitExam()">Grade</button>
+        <button class="toggle-grid-link" id="toggle-grid-btn" onclick="toggleNavigatorGrid()">▲ Minimize</button>
+      </div>
+    </div>
+
+    <div class="bar-nav-row" id="bar-nav-row">
+      <div class="jump-grid-compact" id="jump-grid"></div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="question-list" id="questions-container"></section>
+
+  <section class="key-section">
+    <div class="key-header" onclick="toggleAnswerKey()">
+      <h3 id="key-title">Quick Answer Key</h3>
+      <span id="key-arrow" style="font-size:1rem; font-weight:bold;">▼</span>
+    </div>
+    <div class="collapse-content" id="key-content">
+      <div style="overflow-x:auto;">
+        <table class="key-table" id="key-table"></table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© CSCA Mathematics Question Bank · Trigonometric Functions (300 Questions Embedded)</p>
+</footer>
+
+<script>
+/* ==================== 1. COMPACT QUESTION REPOSITORIES (300 QUESTIONS) ==================== */
+const RAW_ARBITRARY = [
+  ["TRI001","degree and radian","60° is equal to（　　）",["A. π/6","B. π/3","C. π/2","D. 2π/3"],"B"],
+  ["TRI002","degree and radian","3π/2 is equal to（　　）",["A. 90°","B. 180°","C. 360°","D. 270°"],"D"],
+  ["TRI003","unit angle radian","1° is equal to（　　）",["A. π/360","B. π/90","C. π/180","D. 180π"],"C"],
+  ["TRI004","quadrant of angle","The terminal side of angle α＝5π/6 lies in（　　）",["A. Quadrant I","B. Quadrant II","C. Quadrant III","D. Quadrant IV"],"B"],
+  ["TRI005","reference angle","The reference angle of angle α＝7π/6 is（　　）",["A. π/3","B. 5π/6","C. π/6","D. 7π/6"],"C"],
+  ["TRI006","quadrant of angle","The terminal side of angle α＝300° lies in（　　）",["A. Quadrant IV","B. Quadrant I","C. Quadrant II","D. Quadrant III"],"A"],
+  ["TRI007","negative angle quadrant","The terminal side of angle α＝−45° lies in（　　）",["A. Quadrant I","B. Quadrant IV","C. Quadrant II","D. Quadrant III"],"B"],
+  ["TRI008","coterminal angles","Which angle is coterminal with 30°?（　　）",["A. 390°","B. 150°","C. 210°","D. 330°"],"A"],
+  ["TRI009","axis angles","The terminal side of angle α＝π/2 lies on（　　）",["A. positive x-axis","B. negative x-axis","C. positive y-axis","D. negative y-axis"],"C"],
+  ["TRI010","axis angles","The terminal side of angle α＝π lies on（　　）",["A. positive x-axis","B. negative x-axis","C. positive y-axis","D. negative y-axis"],"B"],
+  ["TRI011","tangent domain","For which angle is tanα undefined?（　　）",["A. α＝π/2","B. α＝0","C. α＝π/4","D. α＝π/3"],"A"],
+  ["TRI012","special angle value","sin30°＝（　　）",["A. 1/2","B. √3/2","C. √2/2","D. 1"],"A"],
+  ["TRI013","special angle relation","The relationship between sin30° and cos60° is（　　）",["A. sin30°＞cos60°","B. sin30°＜cos60°","C. cannot determine","D. sin30°＝cos60°"],"D"],
+  ["TRI014","special angle value","Which of the following equations is correct?（　　）",["A. tan45°＝0","B. tan45°＝√3","C. tan45°＝1","D. tan45°＝√3/3"],"C"],
+  ["TRI015","special angle value","sin120°＝（　　）",["A. 1/2","B. √3/2","C. −√3/2","D. −1/2"],"B"],
+  ["TRI016","special angle value","cos135°＝（　　）",["A. √2/2","B. −1/2","C. −√2/2","D. √3/2"],"C"],
+  ["TRI017","special angle value","tan150°＝（　　）",["A. −√3/3","B. √3","C. √3/3","D. −√3"],"A"],
+  ["TRI018","special angle value","cos210°＝（　　）",["A. √3/2","B. −1/2","C. √2/2","D. −√3/2"],"D"],
+  ["TRI019","special angle relation","The relationship between sin225° and cos225° is（　　）",["A. sin225°＞cos225°","B. sin225°＜cos225°","C. cannot determine","D. sin225°＝cos225°"],"D"],
+  ["TRI020","special angle value","tan300°＝（　　）",["A. √3","B. √3/3","C. −√3","D. −√3/3"],"C"],
+  ["TRI021","special angle value","sin270°＝（　　）",["A. 0","B. 1","C. does not exist","D. −1"],"D"],
+  ["TRI022","quadrant sign","If terminal side of α lies in Quadrant II, then sinα（　　）",["A. ＜0","B. ＝0","C. cannot determine","D. ＞0"],"D"],
+  ["TRI023","quadrant sign","If terminal side of α lies in Quadrant II, then cosα（　　）",["A. ＜0","B. ＞0","C. ＝0","D. cannot determine"],"A"],
+  ["TRI024","quadrant sign","If terminal side of α lies in Quadrant II, then tanα（　　）",["A. ＞0","B. ＝0","C. cannot determine","D. ＜0"],"D"],
+  ["TRI025","quadrant sign","If terminal side of α lies in Quadrant III, then sinα（　　）",["A. ＞0","B. ＜0","C. ＝0","D. cannot determine"],"B"],
+  ["TRI026","quadrant sign","If terminal side of α lies in Quadrant III, then cosα（　　）",["A. ＜0","B. ＞0","C. ＝0","D. cannot determine"],"A"],
+  ["TRI027","quadrant sign","If terminal side of α lies in Quadrant III, then tanα（　　）",["A. ＞0","B. ＜0","C. ＝0","D. cannot determine"],"A"],
+  ["TRI028","quadrant sign","If terminal side of α lies in Quadrant IV, then cosα（　　）",["A. ＜0","B. ＝0","C. cannot determine","D. ＞0"],"D"],
+  ["TRI029","quadrant from signs","If sinα＜0 and cosα＞0, then terminal side of α lies in（　　）",["A. Quadrant IV","B. Quadrant I","C. Quadrant II","D. Quadrant III"],"A"],
+  ["TRI030","terminal-side point","P(3，4) lies on terminal side of α; then sinα＝（　　）",["A. 3/5","B. 4/5","C. −4/5","D. −3/5"],"B"],
+  ["TRI031","terminal-side point","P(3，4) lies on terminal side of α; then cosα＝（　　）",["A. 4/5","B. −3/5","C. −4/5","D. 3/5"],"D"],
+  ["TRI032","terminal-side point","P(3，4) lies on terminal side of α; then tanα＝（　　）",["A. 3/4","B. 4/3","C. −4/3","D. −3/4"],"B"],
+  ["TRI033","terminal-side sign","P(−3，4) lies on terminal side of α; which conclusion is correct?（　　）",["A. sin<0, cos<0, tan>0","B. sin>0, cos>0, tan>0","C. sin>0, cos<0, tan<0","D. sin<0, cos>0, tan<0"],"C"],
+  ["TRI034","special angle value","tan225°＝（　　）",["A. −1","B. √3","C. 1","D. −√3"],"C"],
+  ["TRI035","special angle value","cos330°＝（　　）",["A. 1/2","B. √3/2","C. −√3/2","D. −1/2"],"B"],
+  ["TRI036","terminal-side point","P(4，−3) lies on terminal side of α; then sinα＝（　　）",["A. 3/5","B. 4/5","C. −4/5","D. −3/5"],"D"],
+  ["TRI037","terminal-side point","P(4，−3) lies on terminal side of α; then cosα＝（　　）",["A. −4/5","B. 4/5","C. 3/5","D. −3/5"],"B"],
+  ["TRI038","terminal-side point","P(4，−3) lies on terminal side of α; then tanα＝（　　）",["A. −3/4","B. 3/4","C. 4/3","D. −4/3"],"A"],
+  ["TRI039","terminal-side point","P(−1，−1) lies on terminal side of α; then sinα＝（　　）",["A. √2/2","B. −√2/2","C. −1/2","D. 1/2"],"B"],
+  ["TRI040","terminal-side coordinate","P(2，y) lies on terminal side of α, and tanα＝2; then y＝（　　）",["A. 1","B. 2","C. 4","D. −4"],"C"],
+  ["TRI041","terminal-side coordinate","P(x，3) lies on terminal side of α, and tanα＝3/2; then x＝（　　）",["A. 2","B. 3/2","C. 9/2","D. −2"],"A"],
+  ["TRI042","special angle value","sin150°＝（　　）",["A. −1/2","B. √3/2","C. −√3/2","D. 1/2"],"D"],
+  ["TRI043","special angle value","tan(3π/4)＝（　　）",["A. 1","B. √3","C. −√3","D. −1"],"D"],
+  ["TRI044","distance to origin","P(5，12) lies on terminal side of α. Distance r to origin is（　　）",["A. 13","B. 7","C. 12","D. 17"],"A"],
+  ["TRI045","quadrant from point","P(−2，3) lies on terminal side of α; then α lies in（　　）",["A. Quadrant I","B. Quadrant III","C. Quadrant II","D. Quadrant IV"],"C"],
+  ["TRI046","sign from point","P(2，−1) lies on terminal side of α; which conclusion is correct?（　　）",["A. cosα＜0","B. sinα＜0","C. tanα＞0","D. sinα＞0"],"B"],
+  ["TRI047","coterminal relation","The relationship between sin390° and sin30° is（　　）",["A. sin390°＞sin30°","B. sin390°＜sin30°","C. sin390°＝sin30°","D. cannot determine"],"C"],
+  ["TRI048","negative angle relation","The relationship between cos(−π/3) and cos(π/3) is（　　）",["A. cos(−π/3)＞cos(π/3)","B. cos(−π/3)＜cos(π/3)","C. cannot determine","D. cos(−π/3)＝cos(π/3)"],"D"],
+  ["TRI049","reference angle value","Which of the following angles has a sine value of −1/2?（　　）",["A. 330°","B. 30°","C. 150°","D. 240°"],"A"],
+  ["TRI050","sign analysis","tanα＜0, and α lies in Quadrant I or II; then α lies in（　　）",["A. Quadrant I","B. Quadrant III","C. Quadrant II","D. Quadrant IV"],"C"]
+];
+
+const RAW_IDENTITIES = [
+  ["SAT001","Pythagorean identity","Among the following equations, the one that always holds is（　　）",["A. sinα＋cosα＝1","B. sin²α＋cos²α＝1","C. sin²α−cos²α＝1","D. sinα×cosα＝1"],"B"],
+  ["SAT002","tangent quotient identity","When cosα≠0, tanα＝（　　）",["A. cosα/sinα","B. sinα×cosα","C. 1/sinα","D. sinα/cosα"],"D"],
+  ["SAT003","tangent condition","The equation tanα＝sinα/cosα holds under the condition（　　）",["A. sinα≠0","B. tanα≠0","C. cosα≠0","D. α≠0"],"C"],
+  ["SAT004","identity identification","Among the following equations, the incorrect one is（　　）",["A. sin²α＋cos²α＝1","B. tanα＝cosα/sinα","C. sinα＝tanα×cosα","D. cosα＝sinα/tanα"],"B"],
+  ["SAT005","tangent from sine and cosine","If sinα＝3/5 and cosα＝4/5, then tanα＝（　　）",["A. 4/3","B. −3/4","C. 3/4","D. −4/3"],"C"],
+  ["SAT006","Pythagorean application","If sinα＝3/5, then cos²α＝（　　）",["A. 16/25","B. 9/25","C. 4/5","D. −16/25"],"A"],
+  ["SAT007","Pythagorean application","If cosα＝12/13, then sin²α＝（　　）",["A. 144/169","B. 25/169","C. 5/13","D. −25/169"],"B"],
+  ["SAT008","Pythagorean application","If sin²α＝9/25, then cos²α＝（　　）",["A. 16/25","B. 9/25","C. 4/5","D. −16/25"],"A"],
+  ["SAT009","cosine from sine","If sinα＝3/5 and α is in Quadrant II, then cosα＝（　　）",["A. 4/5","B. 3/5","C. −4/5","D. −3/5"],"C"],
+  ["SAT010","cosine from sine","If sinα＝−3/5 and α is in Quadrant IV, then cosα＝（　　）",["A. −4/5","B. 4/5","C. 3/5","D. −3/5"],"B"],
+  ["SAT011","cosine from sine","If sinα＝−5/13 and α is in Quadrant III, then cosα＝（　　）",["A. −12/13","B. 12/13","C. 5/13","D. −5/13"],"A"],
+  ["SAT012","cosine from sine","If sinα＝5/13 and α is in Quadrant I, then cosα＝（　　）",["A. 12/13","B. −12/13","C. 5/13","D. −5/13"],"A"],
+  ["SAT013","tangent from sine","If sinα＝4/5 and α is in Quadrant II, then tanα＝（　　）",["A. 4/3","B. 3/4","C. −3/4","D. −4/3"],"D"],
+  ["SAT014","tangent from sine","If sinα＝−3/5 and α is in Quadrant IV, then tanα＝（　　）",["A. 3/4","B. 4/3","C. −3/4","D. −4/3"],"C"],
+  ["SAT015","tangent from sine","If sinα＝−5/13 and α is in Quadrant III, then tanα＝（　　）",["A. −5/12","B. 5/12","C. 12/5","D. −12/5"],"B"],
+  ["SAT016","sine from cosine","If cosα＝3/5 and α is in Quadrant IV, then sinα＝（　　）",["A. 4/5","B. 3/5","C. −4/5","D. −3/5"],"C"],
+  ["SAT017","sine from cosine","If cosα＝−12/13 and α is in Quadrant II, then sinα＝（　　）",["A. 5/13","B. −5/13","C. 12/13","D. −12/13"],"A"],
+  ["SAT018","tangent from cosine","If cosα＝4/5 and α is in Quadrant I, then tanα＝（　　）",["A. 4/3","B. −3/4","C. −4/3","D. 3/4"],"D"],
+  ["SAT019","tangent from cosine","If cosα＝−4/5 and α is in Quadrant III, then tanα＝（　　）",["A. −3/4","B. 4/3","C. −4/3","D. 3/4"],"D"],
+  ["SAT020","tangent from cosine","If cosα＝5/13 and α is an acute angle, then tanα＝（　　）",["A. −12/5","B. −5/12","C. 12/5","D. 5/12"],"C"],
+  ["SAT021","sine from tangent","If tanα＝3/4 and α is in Quadrant I, then sinα＝（　　）",["A. 4/5","B. −3/5","C. −4/5","D. 3/5"],"D"],
+  ["SAT022","cosine from tangent","If tanα＝−3/4 and α is in Quadrant II, then cosα＝（　　）",["A. 4/5","B. 3/5","C. −3/5","D. −4/5"],"D"],
+  ["SAT023","sine from tangent","If tanα＝5/12 and α is in Quadrant III, then sinα＝（　　）",["A. −5/13","B. 5/13","C. 12/13","D. −12/13"],"A"],
+  ["SAT024","cosine from tangent","If tanα＝−5/12 and α is in Quadrant IV, then cosα＝（　　）",["A. −12/13","B. 5/13","C. −5/13","D. 12/13"],"D"],
+  ["SAT025","tangent from ratio","If sinα＝2cosα and α is in Quadrant I, then tanα＝（　　）",["A. 1/2","B. 2","C. −2","D. cannot determine"],"B"],
+  ["SAT026","tangent from ratio","If cosα＝2sinα and α is in Quadrant I, then tanα＝（　　）",["A. 1/2","B. 2","C. −1/2","D. cannot determine"],"A"],
+  ["SAT027","quadrant determination","If tanα＝−2 and sinα＞0, terminal side of α lies in（　　）",["A. Quadrant II","B. Quadrant I","C. Quadrant III","D. Quadrant IV"],"A"],
+  ["SAT028","simplifying ratios","When sinα≠0, cosα≠0: (sinα/cosα)×(cosα/sinα)＝（　　）",["A. 0","B. tanα","C. sinαcosα","D. 1"],"D"],
+  ["SAT029","Pythagorean simplification","When sinα≠0: sin²α/(1−cos²α)＝（　　）",["A. 1","B. 0","C. sinα","D. cosα"],"A"],
+  ["SAT030","Pythagorean simplification","When cosα≠0: cos²α/(1−sin²α)＝（　　）",["A. 0","B. 1","C. sinα","D. cosα"],"B"],
+  ["SAT031","tangent from equality","If sinα＝cosα, then tanα＝（　　）",["A. 0","B. −1","C. cannot determine","D. 1"],"D"],
+  ["SAT032","squared from tangent","If tanα＝3/4 and α is in Quadrant I, then sin²α＝（　　）",["A. 16/25","B. 9/25","C. 3/5","D. −9/25"],"B"],
+  ["SAT033","squared from tangent","If tanα＝5/12 and α is in Quadrant III, then cos²α＝（　　）",["A. 25/169","B. 12/13","C. 144/169","D. −144/169"],"C"],
+  ["SAT034","tangent from square","If cos²α＝1/2, then tanα＝（　　）",["A. 1","B. −1","C. ±1","D. 1/2"],"C"],
+  ["SAT035","squared tangent","If sin²α＝1/4, then tan²α＝（　　）",["A. 1/4","B. 1/3","C. 3","D. 4/3"],"B"],
+  ["SAT036","sign determination","If sinα＜0 and tanα＞0, then cosα（　　）",["A. ＞0","B. ＝0","C. cannot determine","D. ＜0"],"D"],
+  ["SAT037","sign determination","If cosα＜0 and tanα＜0, then sinα（　　）",["A. ＜0","B. ＞0","C. ＝0","D. cannot determine"],"B"],
+  ["SAT038","sign determination","If sinα×cosα＜0 and cosα＜0, then sinα（　　）",["A. ＞0","B. ＜0","C. ＝0","D. cannot determine"],"A"],
+  ["SAT039","quadrant from sine/cosine","If sinα＝−3/5 and cosα＝−4/5, terminal side of α is in（　　）",["A. Quadrant I","B. Quadrant III","C. Quadrant II","D. Quadrant IV"],"B"],
+  ["SAT040","fractional recovery","If (cosα−sinα)/(cosα＋sinα)＝1/3, then tanα＝（　　）",["A. 2","B. −1/2","C. 1/2","D. −2"],"C"],
+  ["SAT041","tangent from sum","If sinα＋cosα＝0, then tanα＝（　　）",["A. −1","B. 1","C. 0","D. cannot determine"],"A"],
+  ["SAT042","fractional recovery","If (cosα−sinα)/(cosα＋sinα)＝−1/3, then tanα＝（　　）",["A. 1/2","B. −2","C. −1/2","D. 2"],"D"],
+  ["SAT043","product from equality","If sinα＝cosα, then sinα×cosα＝（　　）",["A. −1/2","B. 1","C. −1","D. 1/2"],"D"],
+  ["SAT044","identity transformation","When sinα≠0, cosα≠0: sinα/tanα＝（　　）",["A. cosα","B. sinα","C. tanα","D. 1/cosα"],"A"],
+  ["SAT045","cosine from zero sine","If sinα＝0 and cosα＜0, then cosα＝（　　）",["A. 1","B. 0","C. −1","D. cannot determine"],"C"],
+  ["SAT046","sine from zero tangent","If tanα＝0, then sinα＝（　　）",["A. 1","B. 0","C. −1","D. cannot determine"],"B"],
+  ["SAT047","cosine squared zero sine","If sinα＝0, then cos²α＝（　　）",["A. 0","B. −1","C. 1","D. cannot determine"],"C"],
+  ["SAT048","quadrant from tangent","If tanα＜0 and cosα＞0, terminal side of α lies in（　　）",["A. Quadrant I","B. Quadrant II","C. Quadrant III","D. Quadrant IV"],"D"],
+  ["SAT049","quadrant from signs","If cosα＜0 and tanα＞0, terminal side of α lies in（　　）",["A. Quadrant III","B. Quadrant I","C. Quadrant II","D. Quadrant IV"],"A"],
+  ["SAT050","tangent from sine in Q4","If sinα＝−1/2 and α is in Quadrant IV, then tanα＝（　　）",["A. √3/3","B. −√3","C. −√3/3","D. √3"],"C"]
+];
+
+const RAW_REDUCTION = [
+  ["RF001","negative angle sine","Among the following equations, the one that always holds is（　　）",["A. sin(−α)＝sinα","B. sin(−α)＝−sinα","C. sin(−α)＝cosα","D. sin(−α)＝−cosα"],"B"],
+  ["RF002","negative angle cosine","Among the following equations, the one that always holds is（　　）",["A. cos(−α)＝−cosα","B. cos(−α)＝sinα","C. cos(−α)＝−sinα","D. cos(−α)＝cosα"],"D"],
+  ["RF003","negative angle tangent","When tanα is defined, tan(−α)＝（　　）",["A. tanα","B. 1/tanα","C. −tanα","D. −1/tanα"],"C"],
+  ["RF004","pi minus angle sine","sin(π−α)＝（　　）",["A. −sinα","B. sinα","C. cosα","D. −cosα"],"B"],
+  ["RF005","pi minus angle cosine","cos(π−α)＝（　　）",["A. cosα","B. sinα","C. −cosα","D. −sinα"],"C"],
+  ["RF006","pi minus angle tangent","When tanα is defined, tan(π−α)＝（　　）",["A. −tanα","B. tanα","C. 1/tanα","D. −1/tanα"],"A"],
+  ["RF007","pi plus angle sine","sin(π＋α)＝（　　）",["A. sinα","B. −sinα","C. cosα","D. −cosα"],"B"],
+  ["RF008","pi plus angle cosine","cos(π＋α)＝（　　）",["A. −cosα","B. cosα","C. sinα","D. −sinα"],"A"],
+  ["RF009","pi plus angle tangent","When tanα is defined, tan(π＋α)＝（　　）",["A. −tanα","B. 1/tanα","C. tanα","D. −1/tanα"],"C"],
+  ["RF010","2pi minus angle sine","sin(2π−α)＝（　　）",["A. sinα","B. −sinα","C. cosα","D. −cosα"],"B"],
+  ["RF011","2pi minus angle cosine","cos(2π−α)＝（　　）",["A. cosα","B. −cosα","C. sinα","D. −sinα"],"A"],
+  ["RF012","2pi minus angle tangent","When tanα is defined, tan(2π−α)＝（　　）",["A. −tanα","B. tanα","C. 1/tanα","D. −1/tanα"],"A"],
+  ["RF013","2pi plus angle sine","sin(2π＋α)＝（　　）",["A. −sinα","B. cosα","C. −cosα","D. sinα"],"D"],
+  ["RF014","2pi plus angle cosine","cos(2π＋α)＝（　　）",["A. −cosα","B. sinα","C. cosα","D. −sinα"],"C"],
+  ["RF015","2pi plus angle tangent","When tanα is defined, tan(2π＋α)＝（　　）",["A. −tanα","B. tanα","C. 1/tanα","D. −1/tanα"],"B"],
+  ["RF016","pi/2 minus angle sine","sin(π/2−α)＝（　　）",["A. −cosα","B. sinα","C. cosα","D. −sinα"],"C"],
+  ["RF017","pi/2 minus angle cosine","cos(π/2−α)＝（　　）",["A. sinα","B. −sinα","C. cosα","D. −cosα"],"A"],
+  ["RF018","pi/2 plus angle sine","sin(π/2＋α)＝（　　）",["A. −cosα","B. sinα","C. −sinα","D. cosα"],"D"],
+  ["RF019","pi/2 plus angle cosine","cos(π/2＋α)＝（　　）",["A. sinα","B. cosα","C. −cosα","D. −sinα"],"D"],
+  ["RF020","3pi/2 minus angle sine","sin(3π/2−α)＝（　　）",["A. cosα","B. sinα","C. −cosα","D. −sinα"],"C"],
+  ["RF021","3pi/2 minus angle cosine","cos(3π/2−α)＝（　　）",["A. sinα","B. cosα","C. −cosα","D. −sinα"],"D"],
+  ["RF022","3pi/2 plus angle sine","sin(3π/2＋α)＝（　　）",["A. cosα","B. sinα","C. −sinα","D. −cosα"],"D"],
+  ["RF023","3pi/2 plus angle cosine","cos(3π/2＋α)＝（　　）",["A. sinα","B. −sinα","C. cosα","D. −cosα"],"A"],
+  ["RF024","transformed angle cosine","Given sinα＝3/5, then cos(π/2＋α)＝（　　）",["A. 3/5","B. 4/5","C. −4/5","D. −3/5"],"D"],
+  ["RF025","transformed angle cosine","Given sinα＝−4/5, then cos(π/2−α)＝（　　）",["A. 4/5","B. −4/5","C. 3/5","D. −3/5"],"B"],
+  ["RF026","transformed angle sine","Given cosα＝12/13, then sin(π/2−α)＝（　　）",["A. 12/13","B. −12/13","C. 5/13","D. −5/13"],"A"],
+  ["RF027","transformed angle sine","Given cosα＝−3/5, then sin(π/2＋α)＝（　　）",["A. −3/5","B. 3/5","C. 4/5","D. −4/5"],"A"],
+  ["RF028","transformed angle sine","Given sinα＝5/13, then sin(π＋α)＝（　　）",["A. 5/13","B. 12/13","C. −12/13","D. −5/13"],"D"],
+  ["RF029","transformed angle cosine","Given cosα＝−4/5, then cos(π−α)＝（　　）",["A. 4/5","B. −4/5","C. 3/5","D. −3/5"],"A"],
+  ["RF030","transformed angle tangent","Given tanα＝−2, then tan(π＋α)＝（　　）",["A. 2","B. −2","C. 1/2","D. −1/2"],"B"],
+  ["RF031","transformed angle tangent","Given tanα＝3/4, then tan(π−α)＝（　　）",["A. 3/4","B. 4/3","C. −4/3","D. −3/4"],"D"],
+  ["RF032","negative angle cosine","Given cosα＝−12/13, then cos(−α)＝（　　）",["A. 12/13","B. −12/13","C. 5/13","D. −5/13"],"B"],
+  ["RF033","negative angle sine","Given sinα＝−3/5, then sin(−α)＝（　　）",["A. −3/5","B. 4/5","C. 3/5","D. −4/5"],"C"],
+  ["RF034","negative angle tangent","Given tanα＝5/12, then tan(−α)＝（　　）",["A. 5/12","B. 12/5","C. −5/12","D. −12/5"],"C"],
+  ["RF035","special angle reduction","sin(π＋π/6)＝（　　）",["A. 1/2","B. −1/2","C. √3/2","D. −√3/2"],"B"],
+  ["RF036","special angle reduction","cos(2π−π/3)＝（　　）",["A. −1/2","B. √3/2","C. −√3/2","D. 1/2"],"D"],
+  ["RF037","special angle reduction","tan(π−π/4)＝（　　）",["A. 1","B. −1","C. √3","D. −√3"],"B"],
+  ["RF038","special angle reduction","cos(−π/3)＝（　　）",["A. 1/2","B. −1/2","C. √3/2","D. −√3/2"],"A"],
+  ["RF039","special angle reduction","sin(−π/6)＝（　　）",["A. 1/2","B. −1/2","C. √3/2","D. −√3/2"],"B"],
+  ["RF040","special angle reduction","cos(π＋π/3)＝（　　）",["A. 1/2","B. √3/2","C. −1/2","D. −√3/2"],"C"],
+  ["RF041","special angle reduction","tan(2π＋π/4)＝（　　）",["A. 1","B. −1","C. √3","D. −√3"],"A"],
+  ["RF042","special angle reduction","sin(π/2−π/6)＝（　　）",["A. 1/2","B. −√3/2","C. −1/2","D. √3/2"],"D"],
+  ["RF043","special angle reduction","cos(π/2＋π/6)＝（　　）",["A. 1/2","B. √3/2","C. −√3/2","D. −1/2"],"D"],
+  ["RF044","identifying formulas","When tanα is defined, among the following equations, the incorrect one is（　　）",["A. tan(π＋α)＝−tanα","B. sin(π−α)＝sinα","C. cos(2π−α)＝cosα","D. sin(π/2−α)＝cosα"],"A"],
+  ["RF045","identifying formulas","Among the following equations, the correct one is（　　）",["A. sin(2π＋α)＝−sinα","B. cos(π＋α)＝cosα","C. cos(2π＋α)＝cosα","D. sin(π/2＋α)＝−cosα"],"C"],
+  ["RF046","identifying formulas","Among the following equations, the correct one is（　　）",["A. cos(3π/2＋α)＝−sinα","B. sin(3π/2＋α)＝−cosα","C. sin(3π/2−α)＝cosα","D. cos(π/2−α)＝−sinα"],"B"],
+  ["RF047","identifying formulas","When tanα is defined, among the following equations, the incorrect one is（　　）",["A. sin(−α)＝−sinα","B. tan(2π−α)＝−tanα","C. cos(−α)＝−cosα","D. cos(π−α)＝−cosα"],"C"],
+  ["RF048","angle transformation","sin(7π/6) can be simplified to（　　）",["A. sin(π/6)","B. cos(π/6)","C. −cos(π/6)","D. −sin(π/6)"],"D"],
+  ["RF049","angle transformation","cos(5π/3) can be simplified to（　　）",["A. cos(π/3)","B. −cos(π/3)","C. sin(π/3)","D. −sin(π/3)"],"A"],
+  ["RF050","angle transformation","tan(3π/4) can be simplified to（　　）",["A. tan(π/4)","B. cos(π/4)","C. −tan(π/4)","D. −cos(π/4)"],"C"]
+];
+
+const RAW_GRAPHS = [
+  ["TGP001","domain of sine","The domain of the function y＝sin x is（　　）",["A. (−π/2，π/2)","B. all real numbers ℝ","C. [−1，1]","D. (0，＋∞)"],"B"],
+  ["TGP002","range of cosine","The range of the function y＝cos x is（　　）",["A. all real numbers ℝ","B. (−1，1)","C. (0，＋∞)","D. [−1，1]"],"D"],
+  ["TGP003","domain of tangent","The domain of the function y＝tan x is（　　）",["A. all real numbers ℝ","B. [−1，1]","C. {x∈ℝ｜x≠π/2＋kπ}","D. {x∈ℝ｜x≠kπ}"],"C"],
+  ["TGP004","range of tangent","The range of the function y＝tan x is（　　）",["A. [−1，1]","B. all real numbers ℝ","C. (−∞，0)∪(0，＋∞)","D. [0，＋∞)"],"B"],
+  ["TGP005","period of sine","The least positive period of the function y＝sin x is（　　）",["A. π","B. π/2","C. 2π","D. 4π"],"C"],
+  ["TGP006","period of cosine","The least positive period of the function y＝cos x is（　　）",["A. 2π","B. π","C. π/2","D. 4π"],"A"],
+  ["TGP007","period of tangent","The least positive period of the function y＝tan x is（　　）",["A. 2π","B. π","C. π/2","D. 4π"],"B"],
+  ["TGP008","parity of sine","The function y＝sin x is（　　）",["A. an odd function","B. an even function","C. both odd and even","D. neither odd nor even"],"A"],
+  ["TGP009","parity of cosine","The function y＝cos x is（　　）",["A. an odd function","B. both odd and even","C. an even function","D. neither odd nor even"],"C"],
+  ["TGP010","parity of tangent","The function y＝tan x is（　　）",["A. an even function","B. an odd function","C. both odd and even","D. neither odd nor even"],"B"],
+  ["TGP011","zeros of sine","Within the interval [0，2π], the number of zeros of y＝sin x is（　　）",["A. 3","B. 1","C. 2","D. 4"],"A"],
+  ["TGP012","value on sine graph","For y＝sin x, when x＝π/2, the function value y is（　　）",["A. 1","B. −1","C. 0","D. 1/2"],"A"],
+  ["TGP013","max value of sine","The maximum value of the function y＝sin x is（　　）",["A. −1","B. 0","C. 2","D. 1"],"D"],
+  ["TGP014","intersections with x-axis","In [0，2π], the number of intersection points of y＝sin x with x-axis is（　　）",["A. 1","B. 2","C. 3","D. 4"],"C"],
+  ["TGP015","monotonicity of sine","The function y＝sin x is monotonically increasing on（　　）",["A. [0，π]","B. [−π/2，π/2]","C. [π/2，3π/2]","D. [−π，0]"],"B"],
+  ["TGP016","sine period recognition","The fundamental repeating cycle width of y＝sin x is（　　）",["A. π","B. π/2","C. 2π","D. 4π"],"C"],
+  ["TGP017","value on cosine graph","For y＝cos x, when x＝0, the function value y is（　　）",["A. 1","B. −1","C. 0","D. 1/2"],"A"],
+  ["TGP018","min value position cosine","In [0，2π], y＝cos x attains its minimum value when x＝（　　）",["A. 0","B. π/2","C. 3π/2","D. π"],"D"],
+  ["TGP019","zeros of cosine","Within the interval [0，2π], the number of zeros of y＝cos x is（　　）",["A. 1","B. 3","C. 4","D. 2"],"D"],
+  ["TGP020","monotonicity of cosine","The function y＝cos x is monotonically decreasing on（　　）",["A. [−π/2，π/2]","B. [π，2π]","C. [0，π]","D. [−π，0]"],"C"],
+  ["TGP021","periodicity distance cosine","Distance between abscissas of adjacent highest points of y＝cos x is（　　）",["A. π","B. π/2","C. 4π","D. 2π"],"D"],
+  ["TGP022","symmetry of cosine","The graph of the function y＝cos x is symmetric about（　　）",["A. x-axis","B. origin","C. line y＝x","D. y-axis"],"D"],
+  ["TGP023","tangent undefined point","At which of the following points is y＝tan x undefined?（　　）",["A. x＝π/2","B. x＝0","C. x＝π","D. x＝−π"],"A"],
+  ["TGP024","period of tangent graph","The period between consecutive asymptotes of y＝tan x is（　　）",["A. 2π","B. π/2","C. 4π","D. π"],"D"],
+  ["TGP025","monotonicity of tangent","The function y＝tan x is monotonically increasing on（　　）",["A. (0，π)","B. (−π/2，π/2)","C. (π/2，3π/2)","D. (−π，0)"],"B"],
+  ["TGP026","tangent boundedness","Regarding y＝tan x, which statement is correct?（　　）",["A. No maximum or minimum on domain","B. Range is [−1，1]","C. Symmetric about y-axis","D. Least positive period is 2π"],"A"],
+  ["TGP027","amplitude of sine","The amplitude of the function y＝2sin x is（　　）",["A. 2","B. 1","C. 4","D. 1/2"],"A"],
+  ["TGP028","range of scaled sine","The range of the function y＝2sin x is（　　）",["A. [−1，1]","B. (−2，2)","C. [0，2]","D. [−2，2]"],"D"],
+  ["TGP029","minimum of scaled sine","The minimum value of the function y＝−3sin x is（　　）",["A. −3","B. −1","C. 0","D. 3"],"A"],
+  ["TGP030","amplitude of cosine","The amplitude of the function y＝4cos x is（　　）",["A. 1","B. 4","C. 2","D. 8"],"B"],
+  ["TGP031","range of shifted sine","The range of the function y＝sin x＋1 is（　　）",["A. [−1，1]","B. [1，2]","C. (0，2)","D. [0，2]"],"D"],
+  ["TGP032","minimum of shifted sine","The minimum value of the function y＝sin x＋1 is（　　）",["A. −1","B. 0","C. 1","D. 2"],"B"],
+  ["TGP033","midline of shifted sine","The midline of the graph of y＝sin x−2 is（　　）",["A. y＝0","B. y＝2","C. y＝−2","D. x＝−2"],"C"],
+  ["TGP034","period of compressed sine","The least positive period of y＝sin 2x is（　　）",["A. 2π","B. π/2","C. π","D. 4π"],"C"],
+  ["TGP035","period of sine function","The least positive period of y＝sin(3x) is（　　）",["A. π","B. 2π/3","C. π/3","D. 3π"],"B"],
+  ["TGP036","period of cosine function","The least positive period of y＝cos(4x) is（　　）",["A. 2π","B. π","C. π/4","D. π/2"],"D"],
+  ["TGP037","period of tangent function","The least positive period of y＝tan(5x) is（　　）",["A. 2π/5","B. π/5","C. π","D. 5π"],"B"],
+  ["TGP038","period of tangent function","The least positive period of y＝2tan(3x＋π/4) is（　　）",["A. π/3","B. 2π/3","C. π","D. π/4"],"A"],
+  ["TGP039","amplitude and period","Amplitude and least positive period of y＝3sin(2x) are（　　）",["A. 2，3π","B. 3，π","C. 3，2π","D. 6，π"],"B"],
+  ["TGP040","extrema of cosine","The minimum value of y＝cos(5x)＋4 is（　　）",["A. −1","B. 4","C. 3","D. 5"],"C"],
+  ["TGP041","extrema of sine","The maximum value of y＝2sin x−1 is（　　）",["A. 1","B. −3","C. −1","D. 2"],"A"],
+  ["TGP042","range of cosine-type","The range of y＝−2cos x＋3 is（　　）",["A. [−2，2]","B. [−5，−1]","C. [3，5]","D. [1，5]"],"D"],
+  ["TGP043","horizontal shift","Graph of y＝sin(x−π/2) is obtained from y＝sin x by（　　）",["A. shifting left π/2","B. shifting up π/2","C. shifting down π/2","D. shifting right π/2"],"D"],
+  ["TGP044","vertical shift","Graph of y＝cos x＋2 is obtained from y＝cos x by（　　）",["A. shifting up 2 units","B. shifting down 2 units","C. shifting right 2 units","D. shifting left 2 units"],"A"],
+  ["TGP045","stretching graph","Compared with y＝sin x, the graph of y＝2sin x（　　）",["A. abscissas stretched 2x","B. shifted right 2","C. ordinates stretched 2x","D. period changed to π"],"C"],
+  ["TGP046","frequency compression","Compared with y＝sin x, the graph of y＝sin(2x)（　　）",["A. amplitude is 2","B. period is π","C. shifted up 2","D. range is [−2，2]"],"B"],
+  ["TGP047","cosine basic properties","Regarding y＝cos x, which statement is correct?（　　）",["A. Symmetric about origin","B. Range is ℝ","C. Least positive period is 2π","D. Increasing on [0, π]"],"C"],
+  ["TGP048","sine basic properties","Regarding y＝sin x, which statement is INCORRECT?（　　）",["A. Domain is ℝ","B. Range is [−1，1]","C. Least positive period is 2π","D. Symmetric about y-axis"],"D"],
+  ["TGP049","tangent basic properties","Regarding y＝tan x, which statement is correct?（　　）",["A. Symmetric about origin","B. Domain is ℝ","C. Range is [−1，1]","D. Least positive period is 2π"],"A"],
+  ["TGP050","reflection property","Relationship between y＝−sin x and y＝sin x is（　　）",["A. symmetric about y-axis","B. symmetric about origin","C. symmetric about x-axis","D. shifted up 1 unit"],"C"]
+];
+
+const RAW_SUM_DIFF = [
+  ["SDT001","sine sum formula","sin(α＋β) is equal to（　　）",["A. sinαcosβ−cosαsinβ","B. sinαcosβ＋cosαsinβ","C. cosαcosβ−sinαsinβ","D. cosαcosβ＋sinαsinβ"],"B"],
+  ["SDT002","sine difference formula","sin(α−β) is equal to（　　）",["A. sinαcosβ＋cosαsinβ","B. cosαcosβ−sinαsinβ","C. cosαcosβ＋sinαsinβ","D. sinαcosβ−cosαsinβ"],"D"],
+  ["SDT003","cosine sum formula","cos(α＋β) is equal to（　　）",["A. cosαcosβ＋sinαsinβ","B. sinαcosβ＋cosαsinβ","C. cosαcosβ−sinαsinβ","D. sinαcosβ−cosαsinβ"],"C"],
+  ["SDT004","cosine difference formula","cos(α−β) is equal to（　　）",["A. cosαcosβ−sinαsinβ","B. cosαcosβ＋sinαsinβ","C. sinαcosβ＋cosαsinβ","D. sinαcosβ−cosαsinβ"],"B"],
+  ["SDT005","tangent sum formula","When defined, tan(α＋β) is equal to（　　）",["A. (tanα−tanβ)/(1＋tanαtanβ)","B. (tanα＋tanβ)/(1＋tanαtanβ)","C. (tanα＋tanβ)/(1−tanαtanβ)","D. (tanα−tanβ)/(1−tanαtanβ)"],"C"],
+  ["SDT006","tangent difference formula","When defined, tan(α−β) is equal to（　　）",["A. (tanα−tanβ)/(1＋tanαtanβ)","B. (tanα＋tanβ)/(1−tanαtanβ)","C. (tanα＋tanβ)/(1＋tanαtanβ)","D. (tanα−tanβ)/(1−tanαtanβ)"],"A"],
+  ["SDT007","distinguishing formulas","The correct equation among the following is（　　）",["A. sin(α−β)＝sinαcosβ＋cosαsinβ","B. cos(α−β)＝cosαcosβ＋sinαsinβ","C. cos(α＋β)＝cosαcosβ＋sinαsinβ","D. tan(α＋β)＝(tanα＋tanβ)/(1＋tanαtanβ)"],"B"],
+  ["SDT008","distinguishing formulas","The INCORRECT equation among the following is（　　）",["A. sin(α＋β)＝sinαcosβ−cosαsinβ","B. sin(α−β)＝sinαcosβ−cosαsinβ","C. cos(α＋β)＝cosαcosβ−sinαsinβ","D. cos(α−β)＝cosαcosβ＋sinαsinβ"],"A"],
+  ["SDT009","special angle sum sine","sin75°＝（　　）",["A. (√6−√2)/4","B. (√3＋1)/2","C. (√6＋√2)/4","D. √3/2"],"C"],
+  ["SDT010","special angle sum cosine","cos75°＝（　　）",["A. (√6＋√2)/4","B. (√6−√2)/4","C. (√3−1)/2","D. √2/2"],"B"],
+  ["SDT011","special angle diff sine","sin15°＝（　　）",["A. (√6−√2)/4","B. (√6＋√2)/4","C. (√3−1)/2","D. 1/2"],"A"],
+  ["SDT012","special angle diff cosine","cos15°＝（　　）",["A. (√6＋√2)/4","B. (√6−√2)/4","C. (√3＋1)/2","D. √3/2"],"A"],
+  ["SDT013","special angle sum tangent","tan75°＝（　　）",["A. 2−√3","B. √3","C. 1/√3","D. 2＋√3"],"D"],
+  ["SDT014","special angle diff tangent","tan15°＝（　　）",["A. 2＋√3","B. √3","C. 2−√3","D. √3/3"],"C"],
+  ["SDT015","special angle sum cosine","cos105°＝（　　）",["A. (√6−√2)/4","B. (√2−√6)/4","C. (√6＋√2)/4","D. −(√6＋√2)/4"],"B"],
+  ["SDT016","quadrant and sine sum","cosα＝−3/5, α in Q II; then sin(π/6＋α)＝（　　）",["A. (4√3＋3)/10","B. (3−4√3)/10","C. (4√3−3)/10","D. −(4√3＋3)/10"],"C"],
+  ["SDT017","comparing acute angles","If α, β are both acute angles, the correct inequality is（　　）",["A. sin(α−β)＜sin(α＋β)","B. cos(α−β)＜cos(α＋β)","C. cosαcosβ＜cos(α＋β)","D. sinα＋sinβ＜sin(α＋β)"],"A"],
+  ["SDT018","sine of sum from values","sinα＝3/5, cosα＝4/5, sinβ＝5/13, cosβ＝12/13; sin(α＋β)＝（　　）",["A. 16/65","B. 33/65","C. 63/65","D. 56/65"],"D"],
+  ["SDT019","cosine of diff from values","sinα＝3/5, cosα＝4/5, sinβ＝5/13, cosβ＝12/13; cos(α−β)＝（　　）",["A. 33/65","B. 56/65","C. 16/65","D. 63/65"],"D"],
+  ["SDT020","cosine of sum from values","sinα＝3/5, cosα＝4/5, sinβ＝5/13, cosβ＝12/13; cos(α＋β)＝（　　）",["A. 63/65","B. 56/65","C. 33/65","D. 16/65"],"C"],
+  ["SDT021","sine of diff from values","sinα＝3/5, cosα＝4/5, sinβ＝5/13, cosβ＝12/13; sin(α−β)＝（　　）",["A. 56/65","B. 33/65","C. 63/65","D. 16/65"],"D"],
+  ["SDT022","sine of sum from values","sinα＝5/13, cosα＝12/13, sinβ＝3/5, cosβ＝−4/5; sin(α＋β)＝（　　）",["A. 56/65","B. 63/65","C. −63/65","D. 16/65"],"D"],
+  ["SDT023","applying special formulas","sin(π/4)＝√2/2, sin(π/6)＝1/2; then cos(π/12)＝（　　）",["A. (√6＋√2)/4","B. (√6−√2)/4","C. √3/2","D. 1/2"],"A"],
+  ["SDT024","tangent diff from values","tanα−tanβ＝1, tanαtanβ＝3/4; then tan(α−β)＝（　　）",["A. 4/5","B. 1","C. 7/4","D. 4/7"],"D"],
+  ["SDT025","sine of diff from values","sinα＝12/13, cosα＝−5/13, sinβ＝3/5, cosβ＝4/5; sin(α−β)＝（　　）",["A. 33/65","B. 63/65","C. 56/65","D. −16/65"],"B"],
+  ["SDT026","tangent of sum from values","tanα＝1/2, tanβ＝1/3; then tan(α＋β)＝（　　）",["A. 1","B. 1/7","C. 5/6","D. 6/5"],"A"],
+  ["SDT027","tangent of diff from values","tanα＝1/2, tanβ＝1/3; then tan(α−β)＝（　　）",["A. 1/7","B. 1","C. 5/7","D. 7/5"],"A"],
+  ["SDT028","special angles sine diff","sin(π/3−π/4)＝（　　）",["A. (√6＋√2)/4","B. √3/2","C. −(√6−√2)/4","D. (√6−√2)/4"],"D"],
+  ["SDT029","cosine sum from products","cosαcosβ＝2/3, sinαsinβ＝1/6; then cos(α＋β)＝（　　）",["A. 1/2","B. 5/6","C. −1/2","D. 1/3"],"A"],
+  ["SDT030","product from sum relation","sin(α＋β)＝3/5, sinαcosβ＝1/5; then cosαsinβ＝（　　）",["A. 1/5","B. 2/5","C. −2/5","D. 4/5"],"B"],
+  ["SDT031","product from diff relation","cos(α−β)＝7/10, sinαsinβ＝1/5; then cosαcosβ＝（　　）",["A. 3/10","B. −1/2","C. 9/10","D. 1/2"],"D"],
+  ["SDT032","definedness tangent sum","tanα＝1, tanβ＝1; then tan(α＋β)（　　）",["A. equals 0","B. is undefined","C. equals 1","D. equals 2"],"B"],
+  ["SDT033","recognizing expressions","cosαcosβ−sinαsinβ is equal to（　　）",["A. cos(α−β)","B. sin(α＋β)","C. cos(α＋β)","D. sin(α−β)"],"C"],
+  ["SDT034","recognizing expressions","sinαcosβ−cosαsinβ is equal to（　　）",["A. sin(α＋β)","B. cos(α＋β)","C. sin(α−β)","D. cos(α−β)"],"C"],
+  ["SDT035","recognizing expressions","When defined, (tanα−tanβ)/(1＋tanαtanβ) is equal to（　　）",["A. tan(α＋β)","B. tan(α−β)","C. tanα＋tanβ","D. tanα−tanβ"],"B"],
+  ["SDT036","sign of cosine diff","If α and β are both acute angles, then cos(α−β)（　　）",["A. ＜0","B. ＝0","C. cannot determine","D. ＞0"],"D"],
+  ["SDT037","sign of sine diff","If α and β are both acute angles, then sign of sin(α−β)（　　）",["A. always > 0","B. cannot determine","C. always < 0","D. always = 0"],"B"],
+  ["SDT038","sign of sine sum","If α, β acute and α＋β＜π, then sin(α＋β)（　　）",["A. ＞0","B. ＜0","C. ＝0","D. cannot determine"],"A"],
+  ["SDT039","sign of cosine sum","If α, β acute and α＋β＞π/2, then cos(α＋β)（　　）",["A. ＞0","B. ＜0","C. ＝0","D. cannot determine"],"B"],
+  ["SDT040","special sum relation","If α, β acute and α＋β＝π/2, then sin(α＋β)＝（　　）",["A. 0","B. −1","C. 1","D. cannot determine"],"C"],
+  ["SDT041","special diff relation","If α−β＝π/3, then sinαcosβ−cosαsinβ＝（　　）",["A. √3/2","B. 1/2","C. −√3/2","D. −1/2"],"A"],
+  ["SDT042","special sum relation","If α＋β＝π/3, then cosαcosβ−sinαsinβ＝（　　）",["A. √3/2","B. −1/2","C. −√3/2","D. 1/2"],"D"],
+  ["SDT043","special diff relation","If α, β acute and α−β＝π/6, then cos(α−β)＝（　　）",["A. 1/2","B. −√3/2","C. −1/2","D. √3/2"],"D"],
+  ["SDT044","recognizing expressions","sinαcosβ＋cosαsinβ is equal to（　　）",["A. sin(α＋β)","B. sin(α−β)","C. cos(α＋β)","D. cos(α−β)"],"A"],
+  ["SDT045","sine sum from products","sinαcosβ＝1/4, cosαsinβ＝3/4; then sin(α＋β)＝（　　）",["A. 1/2","B. −1","C. 1","D. 1/4"],"C"],
+  ["SDT046","cosine sum from products","cosαcosβ＝5/12, sinαsinβ＝1/12; then cos(α＋β)＝（　　）",["A. 1/2","B. 1/3","C. −1/3","D. 1/6"],"B"],
+  ["SDT047","sine diff from products","sinαcosβ＝1/3, cosαsinβ＝1/6; then sin(α−β)＝（　　）",["A. 1/2","B. −1/6","C. 1/6","D. −1/2"],"C"],
+  ["SDT048","tangent sum from values","tanα＋tanβ＝7/6, tanαtanβ＝−1/2; then tan(α＋β)＝（　　）",["A. −7/9","B. 7/3","C. −7/3","D. 7/9"],"D"],
+  ["SDT049","recognizing expressions","cosαcosβ＋sinαsinβ is equal to（　　）",["A. cos(α−β)","B. cos(α＋β)","C. sin(α＋β)","D. sin(α−β)"],"A"],
+  ["SDT050","cosine diff from products","cosαcosβ＝3/10, sinαsinβ＝1/10; then cos(α−β)＝（　　）",["A. 1/5","B. −2/5","C. 2/5","D. 4/5"],"C"]
+];
+
+const RAW_DOUBLE = [
+  ["DAF001","sine double-angle","sin2α is equal to（　　）",["A. sin²α−cos²α","B. 2sinαcosα","C. cos²α−sin²α","D. 2tanα/(1−tan²α)"],"B"],
+  ["DAF002","cosine double-angle","cos2α is equal to（　　）",["A. sin²α−cos²α","B. 2sinαcosα","C. 1−sin²α","D. cos²α−sin²α"],"D"],
+  ["DAF003","tangent double-angle","When defined, tan2α is equal to（　　）",["A. 2tanα/(1＋tan²α)","B. (tanα＋1)/(1−tanα)","C. 2tanα/(1−tan²α)","D. tan²α−1"],"C"],
+  ["DAF004","cosine double-angle form","Among the following equations, the correct one is（　　）",["A. cos2α＝1＋2sin²α","B. cos2α＝1−2sin²α","C. cos2α＝2sin²α−1","D. cos2α＝2sinαcosα"],"B"],
+  ["DAF005","cosine double-angle form","Among the following equations, the correct one is（　　）",["A. cos2α＝1−2cos²α","B. cos2α＝2sinαcosα","C. cos2α＝2cos²α−1","D. cos2α＝sin²α＋cos²α"],"C"],
+  ["DAF006","discriminating double-angle","Among the following equations, the incorrect one is（　　）",["A. sin2α＝sin²α−cos²α","B. cos2α＝cos²α−sin²α","C. cos2α＝1−2sin²α","D. sin2α＝2sinαcosα"],"A"],
+  ["DAF007","recognizing double-angle","2sinαcosα is equal to（　　）",["A. cos2α","B. sin2α","C. tan2α","D. sin²α−cos²α"],"B"],
+  ["DAF008","tangent double definedness","If tanα＝1, then tan2α（　　）",["A. is undefined","B. equals 0","C. equals 1","D. equals 2"],"A"],
+  ["DAF009","cosine double from sine","Given sinα＝1/4, then cos2α＝（　　）",["A. 15/16","B. 1/8","C. 7/8","D. −7/8"],"C"],
+  ["DAF010","cosine double from sine²","Given sin²α＝9/25, then cos2α＝（　　）",["A. 16/25","B. 7/25","C. −7/25","D. −16/25"],"B"],
+  ["DAF011","cosine double from cosine","Given cosα＝3/5, then cos2α＝（　　）",["A. −7/25","B. 7/25","C. 16/25","D. −16/25"],"A"],
+  ["DAF012","cosine double from cosine²","Given cos²α＝3/4, then cos2α＝（　　）",["A. 1/2","B. −1/2","C. 3/4","D. −3/4"],"A"],
+  ["DAF013","cosine double from special","Given sinα＝√2/2, then cos2α＝（　　）",["A. 1","B. −1","C. 1/2","D. 0"],"D"],
+  ["DAF014","squared diff from sine","Given sinα＝√3/2, then sin²α−cos²α＝（　　）",["A. −1/2","B. √3/2","C. 1/2","D. −√3/2"],"C"],
+  ["DAF015","cosine double from cosine","Given cosα＝−12/13, then cos2α＝（　　）",["A. −119/169","B. 119/169","C. 25/169","D. −25/169"],"B"],
+  ["DAF016","cosine double from equality","If sin²α＝cos²α, then cos2α＝（　　）",["A. 1","B. −1","C. 0","D. 1/2"],"C"],
+  ["DAF017","squared diff from sine²","Given sin²α＝2/3, then sin²α−cos²α＝（　　）",["A. 1/3","B. −1/3","C. 2/3","D. −2/3"],"A"],
+  ["DAF018","squared diff from cosine","Given cosα＝5/13, then sin²α−cos²α＝（　　）",["A. −119/169","B. 25/169","C. −25/169","D. 119/169"],"D"],
+  ["DAF019","sine double in Q I","sinα＝3/5, α in Quadrant I; then sin2α＝（　　）",["A. 12/25","B. 18/25","C. 7/25","D. 24/25"],"D"],
+  ["DAF020","sine double in Q II","sinα＝3/5, α in Quadrant II; then sin2α＝（　　）",["A. 24/25","B. −12/25","C. −24/25","D. 12/25"],"C"],
+  ["DAF021","sine double in Q IV","cosα＝5/13, α in Quadrant IV; then sin2α＝（　　）",["A. 120/169","B. −60/169","C. 60/169","D. −120/169"],"D"],
+  ["DAF022","sine double in Q III","cosα＝−12/13, α in Quadrant III; then sin2α＝（　　）",["A. 60/169","B. −120/169","C. −60/169","D. 120/169"],"D"],
+  ["DAF023","tangent double in Q III","cosα＝−3/5, α in Quadrant III; then tan2α＝（　　）",["A. −24/7","B. 24/7","C. −12/7","D. 12/7"],"A"],
+  ["DAF024","sine double from product","Given sinαcosα＝3/10, then sin2α＝（　　）",["A. 3/10","B. −3/5","C. −3/10","D. 3/5"],"D"],
+  ["DAF025","product from sine double","Given sin2α＝−8/13, then sinαcosα＝（　　）",["A. 4/13","B. −4/13","C. −8/13","D. 8/13"],"B"],
+  ["DAF026","sine double in Q IV","sinα＝−3/5, α in Quadrant IV; then sin2α＝（　　）",["A. −24/25","B. 24/25","C. −12/25","D. 12/25"],"A"],
+  ["DAF027","tangent double from value","Given tanα＝1/2, then tan2α＝（　　）",["A. 4/3","B. 2/3","C. 3/4","D. −4/3"],"A"],
+  ["DAF028","tangent double from tan²","Given tan²α＝1/9 and tanα＞0, then tan2α＝（　　）",["A. 2/3","B. 4/3","C. −3/4","D. 3/4"],"D"],
+  ["DAF029","tangent double from sine","sinα＝3/5, α in Quadrant I; then tan2α＝（　　）",["A. 24/7","B. 4/3","C. −24/7","D. 7/24"],"A"],
+  ["DAF030","tangent double ratio","Given tanα＝−1/3, then tan2α/tanα＝（　　）",["A. 3/4","B. 9/4","C. −9/4","D. 4/9"],"B"],
+  ["DAF031","tangent double from special","Given tanα＝√3/3, then tan2α＝（　　）",["A. 3√3/2","B. √3/2","C. 2√3/3","D. √3"],"D"],
+  ["DAF032","tangent double undefined","The value of tanα that makes tan2α undefined is（　　）",["A. tanα＝0","B. tanα＝±1","C. tanα＞0","D. tanα＜0"],"B"],
+  ["DAF033","tangent double formula","When defined, among the following equations, the correct one is（　　）",["A. tan2α＝2tanα/(1＋tan²α)","B. tan2α＝(tanα＋1)/(1−tanα)","C. tan2α＝2tanα/(1−tan²α)","D. tan2α＝tan²α−1"],"C"],
+  ["DAF034","cosine double from zero tan","Given tanα＝0, then cos2α＝（　　）",["A. 0","B. −1","C. 1","D. cannot determine"],"C"],
+  ["DAF035","special angle sine double","sin(2×30°)＝（　　）",["A. 1/2","B. √3/2","C. 1","D. −√3/2"],"B"],
+  ["DAF036","special angle cosine double","cos(2×60°)＝（　　）",["A. 1/2","B. √3/2","C. −√3/2","D. −1/2"],"D"],
+  ["DAF037","special angle tangent double","tan(2×45°)（　　）",["A. equals 0","B. is undefined","C. equals 1","D. equals −1"],"B"],
+  ["DAF038","special angle sine double","sin(2×(−30°))＝（　　）",["A. −√3/2","B. √3/2","C. −1/2","D. 1/2"],"A"],
+  ["DAF039","reverse sine² from cosine double","Given cos2α＝−1/2, then sin²α＝（　　）",["A. 1/4","B. 3/4","C. 1/2","D. −3/4"],"B"],
+  ["DAF040","reverse sine² from cosine double","Given cos2α＝3/5, then sin²α＝（　　）",["A. 4/5","B. 3/5","C. 1/5","D. 2/5"],"C"],
+  ["DAF041","reverse cosine² from cosine double","Given cos2α＝−1/3, then cos²α＝（　　）",["A. 1/3","B. 2/3","C. 1/6","D. 5/6"],"A"],
+  ["DAF042","squared-diff double angle","sin²α−cos²α is equal to（　　）",["A. cos2α","B. sin2α","C. −sin2α","D. −cos2α"],"D"],
+  ["DAF043","power reduction formula","Among the following equations, the correct one is（　　）",["A. sin²α＝(1＋cos2α)/2","B. cos²α＝(1−cos2α)/2","C. sin²α＝sin2α/2","D. sin²α＝(1−cos2α)/2"],"D"],
+  ["DAF044","sine double from sum","Given sinα＋cosα＝√2, then sin2α＝（　　）",["A. 1","B. 0","C. −1","D. 1/2"],"A"],
+  ["DAF045","sine double from diff","Given sinα−cosα＝√2, then sin2α＝（　　）",["A. 1","B. 0","C. −1","D. −1/2"],"C"],
+  ["DAF046","sine double from sum","Given sinα＋cosα＝1/2, then sin2α＝（　　）",["A. 3/4","B. −3/4","C. 1/4","D. −1/4"],"B"],
+  ["DAF047","sine double from diff","Given sinα−cosα＝1, then sin2α＝（　　）",["A. 1","B. −1","C. 0","D. 1/2"],"C"],
+  ["DAF048","cosine double from squared diff","Given sin²α−cos²α＝2/5, then cos2α＝（　　）",["A. 2/5","B. 3/5","C. −3/5","D. −2/5"],"D"],
+  ["DAF049","cosine double from squared diff","Given cos²α−sin²α＝−3/7, then cos2α＝（　　）",["A. −3/7","B. 3/7","C. 4/7","D. −4/7"],"A"],
+  ["DAF050","comprehensive double-angle","Among the following conclusions, the correct one is（　　）",["A. If sinα＝0, cos2α＝0","B. If cosα＝0, cos2α＝0","C. If sinαcosα＝0, sin2α＝0","D. If tanα＝0, tan2α undefined"],"C"]
+];
+
+/* Rehydrate helper */
+const parseRaw = arr => arr.map(([id, kp, q, options, ans]) => ({id, kp, q, options, ans}));
+
+const DATA = {
+  arbitrary: parseRaw(RAW_ARBITRARY),
+  identities: parseRaw(RAW_IDENTITIES),
+  reduction: parseRaw(RAW_REDUCTION),
+  graphs: parseRaw(RAW_GRAPHS),
+  sum_diff: parseRaw(RAW_SUM_DIFF),
+  double_angle: parseRaw(RAW_DOUBLE)
+};
+
+/* ==================== 2. APPLICATION LOGIC ==================== */
+let currentTab = 'arbitrary';
+let currentMode = 'practice';
+let isGridCollapsed = false;
+
+let userAnswers = {};
+let examSubmitted = {};
+for (let key in DATA) {
+  userAnswers[key] = {};
+  examSubmitted[key] = false;
+}
+
+/* Timer State */
+let examDurationMinutes = 45;
+let examTimeRemaining = 45 * 60;
+let timerInterval = null;
+let isTimerRunning = false;
+
+function switchTab(tabKey) {
+  currentTab = tabKey;
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  const btn = document.getElementById(`tab-${tabKey}`);
+  if (btn) btn.classList.add('active');
+
+  const names = {
+    arbitrary: "Arbitrary Angles",
+    identities: "Fundamental Identities",
+    reduction: "Reduction Formulas",
+    graphs: "Graphs & Properties",
+    sum_diff: "Sum & Difference of Two Angles",
+    double_angle: "Double-Angle Formulas"
+  };
+  document.getElementById('key-title').innerText = `Quick Answer Key (${names[tabKey] || tabKey})`;
+
+  renderApp();
+}
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-practice').classList.toggle('active', mode === 'practice');
+  document.getElementById('btn-exam').classList.toggle('active', mode === 'exam');
+
+  document.getElementById('score-box').style.display = mode === 'exam' ? 'flex' : 'none';
+  document.getElementById('practice-acc-box').style.display = mode === 'practice' ? 'flex' : 'none';
+  document.getElementById('btn-submit-exam').style.display = mode === 'exam' ? 'inline-block' : 'none';
+
+  const timerBox = document.getElementById('timer-box');
+  if (mode === 'exam') {
+    timerBox.style.display = 'flex';
+    if (!isTimerRunning && !examSubmitted[currentTab]) {
+      startTimer();
+    }
+  } else {
+    timerBox.style.display = 'none';
+    pauseTimer();
+  }
+
+  renderApp();
+}
+
+/* Timer Control Functions */
+function startTimer() {
+  if (isTimerRunning) return;
+  isTimerRunning = true;
+  document.getElementById('timer-toggle-btn').innerText = '⏸';
+  timerInterval = setInterval(() => {
+    if (examTimeRemaining > 0) {
+      examTimeRemaining--;
+      updateTimerDisplay();
+    } else {
+      pauseTimer();
+      alert("Time is up! Your exam will now be submitted and graded.");
+      submitExam();
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  if (!isTimerRunning) return;
+  clearInterval(timerInterval);
+  isTimerRunning = false;
+  const btn = document.getElementById('timer-toggle-btn');
+  if (btn) btn.innerText = '▶';
+}
+
+function toggleTimer() {
+  if (isTimerRunning) pauseTimer();
+  else startTimer();
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(examTimeRemaining / 60);
+  const s = examTimeRemaining % 60;
+  const str = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  const el = document.getElementById('timer-display');
+  if (el) {
+    el.innerText = str;
+    el.style.color = examTimeRemaining <= 300 ? 'var(--danger)' : 'var(--slate-800)';
+  }
+}
+
+function ensureTimerModal() {
+  let backdrop = document.getElementById('timer-modal-backdrop');
+  if (backdrop) return backdrop;
+
+  backdrop = document.createElement('div');
+  backdrop.id = 'timer-modal-backdrop';
+  backdrop.className = 'timer-modal-backdrop';
+  backdrop.hidden = true;
+  backdrop.innerHTML = `
+    <section class="timer-modal" role="dialog" aria-modal="true" aria-labelledby="timer-modal-title">
+      <h2 id="timer-modal-title">Set Exam Timer</h2>
+      <p>Choose exam duration (1 to 300 minutes):</p>
+      <form id="timer-modal-form">
+        <label for="timer-duration-input">Duration (minutes)</label>
+        <input id="timer-duration-input" name="duration" type="number" min="1" max="300" step="1" required inputmode="numeric" />
+        <div id="timer-modal-error" class="timer-modal-error" role="alert"></div>
+        <div class="timer-modal-actions">
+          <button class="timer-modal-cancel" type="button" id="timer-modal-cancel">Cancel</button>
+          <button class="timer-modal-save" type="submit">Set Timer</button>
+        </div>
+      </form>
+    </section>`;
+  document.body.appendChild(backdrop);
+
+  backdrop.addEventListener('click', e => { if (e.target === backdrop) closeTimerModal(); });
+  document.getElementById('timer-modal-cancel').addEventListener('click', closeTimerModal);
+  document.getElementById('timer-modal-form').addEventListener('submit', applyTimerDuration);
+  return backdrop;
+}
+
+function promptTimerDuration() {
+  const backdrop = ensureTimerModal();
+  const input = document.getElementById('timer-duration-input');
+  const error = document.getElementById('timer-modal-error');
+  input.value = String(examDurationMinutes);
+  error.textContent = '';
+  backdrop.hidden = false;
+  setTimeout(() => { input.focus(); input.select(); }, 0);
+}
+
+function closeTimerModal() {
+  const backdrop = document.getElementById('timer-modal-backdrop');
+  if (backdrop) backdrop.hidden = true;
+}
+
+function applyTimerDuration(event) {
+  event.preventDefault();
+  const input = document.getElementById('timer-duration-input');
+  const error = document.getElementById('timer-modal-error');
+  const mins = Number(input.value);
+  if (!Number.isInteger(mins) || mins < 1 || mins > 300) {
+    error.textContent = 'Please enter a whole number between 1 and 300.';
+    input.focus();
+    return;
+  }
+  examDurationMinutes = mins;
+  examTimeRemaining = mins * 60;
+  updateTimerDisplay();
+  closeTimerModal();
+  if (!isTimerRunning && currentMode === 'exam' && !examSubmitted[currentTab]) {
+    startTimer();
+  }
+}
+
+window.addEventListener('keydown', e => { if (e.key === 'Escape') closeTimerModal(); });
+
+function toggleNavigatorGrid() {
+  isGridCollapsed = !isGridCollapsed;
+  document.getElementById('bar-nav-row').classList.toggle('collapsed', isGridCollapsed);
+  document.getElementById('toggle-grid-btn').innerText = isGridCollapsed ? '▼ Show Grid' : '▲ Minimize';
+}
+
+function renderApp() {
+  renderNavigator();
+  renderQuestions();
+  renderAnswerKeyTable();
+  updateStats();
+}
+
+function renderNavigator() {
+  const container = document.getElementById('jump-grid');
+  container.innerHTML = '';
+  const questions = DATA[currentTab] || [];
+  const answers = userAnswers[currentTab] || {};
+  const isExamDone = currentMode === 'exam' && examSubmitted[currentTab];
+
+  questions.forEach((q, idx) => {
+    const node = document.createElement('a');
+    node.className = 'jump-node';
+    node.innerText = idx + 1;
+    node.href = `#q-${q.id}`;
+
+    const chosen = answers[q.id];
+    if (chosen) {
+      if (currentMode === 'practice' || isExamDone) {
+        node.classList.add(chosen === q.ans ? 'correct' : 'wrong');
+      } else {
+        node.classList.add('answered');
+      }
+    }
+    container.appendChild(node);
+  });
+}
+
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  const questions = DATA[currentTab] || [];
+  const answers = userAnswers[currentTab] || {};
+  const isExamDone = currentMode === 'exam' && examSubmitted[currentTab];
+
+  questions.forEach((item) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = `q-${item.id}`;
+
+    const chosen = answers[item.id];
+
+    let optionsHtml = item.options.map(opt => {
+      const optLetter = opt.charAt(0);
+      let btnClasses = ['opt-btn'];
+
+      if (chosen === optLetter) btnClasses.push('selected');
+
+      if ((currentMode === 'practice' && chosen) || isExamDone) {
+        if (optLetter === item.ans) btnClasses.push('correct');
+        else if (chosen === optLetter && chosen !== item.ans) btnClasses.push('wrong');
+      }
+
+      return `<button class="${btnClasses.join(' ')}" onclick="selectOption('${item.id}', '${optLetter}')">
+                ${opt}
+              </button>`;
+    }).join('');
+
+    let feedbackHtml = '';
+    if ((currentMode === 'practice' && chosen) || isExamDone) {
+      const isRight = chosen === item.ans;
+      feedbackHtml = `
+        <div class="q-feedback show ${isRight ? 'correct' : 'wrong'}">
+          ${isRight ? '✓ <strong>Correct!</strong>' : `✗ <strong>Incorrect.</strong> The correct answer is <strong>${item.ans}</strong>.`}
+        </div>`;
+    }
+
+    card.innerHTML = `
+      <div class="q-header">
+        <span class="q-id">${item.id}</span>
+        <span class="q-tag">【Knowledge Point: ${item.kp}】</span>
+      </div>
+      <div class="q-text">${item.q}</div>
+      <div class="options-grid grid-2">${optionsHtml}</div>
+      ${feedbackHtml}`;
+
+    container.appendChild(card);
+  });
+}
+
+function selectOption(qId, letter) {
+  if (currentMode === 'exam' && examSubmitted[currentTab]) return;
+
+  if (!userAnswers[currentTab]) userAnswers[currentTab] = {};
+  userAnswers[currentTab][qId] = letter;
+  renderNavigator();
+  renderQuestions();
+  updateStats();
+}
+
+function updateStats() {
+  const questions = DATA[currentTab] || [];
+  const total = questions.length;
+  const answers = userAnswers[currentTab] || {};
+  const answeredCount = Object.keys(answers).length;
+
+  document.getElementById('stat-progress').innerText = `${answeredCount} / ${total}`;
+
+  let correctCount = 0;
+  for (let id in answers) {
+    const qObj = questions.find(q => q.id === id);
+    if (qObj && answers[id] === qObj.ans) correctCount++;
+  }
+
+  if (currentMode === 'practice') {
+    if (answeredCount === 0) {
+      document.getElementById('stat-accuracy').innerText = '--';
+    } else {
+      const rate = Math.round((correctCount / answeredCount) * 100);
+      document.getElementById('stat-accuracy').innerText = `${rate}% (${correctCount}/${answeredCount})`;
+    }
+  } else {
+    if (examSubmitted[currentTab]) {
+      const score = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+      document.getElementById('stat-score').innerText = `${score}% (${correctCount}/${total})`;
+    } else {
+      document.getElementById('stat-score').innerText = `Not Graded`;
+    }
+  }
+}
+
+function submitExam() {
+  examSubmitted[currentTab] = true;
+  pauseTimer();
+  renderApp();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function resetCurrentTab() {
+  if (confirm(`Reset all answers for the current topic?`)) {
+    userAnswers[currentTab] = {};
+    examSubmitted[currentTab] = false;
+    examTimeRemaining = examDurationMinutes * 60;
+    updateTimerDisplay();
+    if (currentMode === 'exam') startTimer();
+    renderApp();
+  }
+}
+
+function toggleAnswerKey() {
+  const content = document.getElementById('key-content');
+  const arrow = document.getElementById('key-arrow');
+  const isOpen = content.classList.toggle('open');
+  arrow.innerText = isOpen ? '▲' : '▼';
+}
+
+function renderAnswerKeyTable() {
+  const table = document.getElementById('key-table');
+  const questions = DATA[currentTab] || [];
+
+  let headerHtml = '<tr>';
+  for (let i = 0; i < 10; i++) headerHtml += `<th>Q#</th><th>Ans</th>`;
+  headerHtml += '</tr>';
+
+  let bodyHtml = '';
+  const rows = Math.ceil(questions.length / 10) || 5;
+  for (let row = 0; row < rows; row++) {
+    bodyHtml += '<tr>';
+    for (let col = 0; col < 10; col++) {
+      const index = col * rows + row;
+      if (index < questions.length) {
+        const q = questions[index];
+        bodyHtml += `<td><strong>${q.id}</strong></td><td class="correct-highlight">${q.ans}</td>`;
+      } else {
+        bodyHtml += `<td></td><td></td>`;
+      }
+    }
+    bodyHtml += '</tr>';
+  }
+
+  table.innerHTML = `<thead>${headerHtml}</thead><tbody>${bodyHtml}</tbody>`;
+}
+
+// Initial Run
+updateTimerDisplay();
+renderApp();
+</script>
+</body>
+</html>
